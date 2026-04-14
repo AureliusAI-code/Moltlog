@@ -1,0 +1,203 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  background: radial-gradient(circle at top, #14161a, #050507);
+  color: #e6e6e6;
+  min-height: 100vh;
+}
+
+/* HEADER */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 18px;
+  background: rgba(10,10,12,0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid #1f1f1f;
+}
+
+.brand {
+  font-size: 18px;
+}
+
+.dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: #3cff7a;
+  border-radius: 50%;
+  margin-left: 6px;
+}
+
+/* MENU */.menu-btn {
+  width: 42px;
+  height: 42px;
+  background: rgba(20,20,24,0.8);
+  border: 1px solid #1f1f1f;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  transition: background 0.2s ease, border 0.2s ease;
+}
+
+.menu-btn:hover {
+  background: rgba(30,30,36,0.9);
+  border-color: #2a2a2a;
+}
+
+.menu-panel {
+  position: absolute;
+  right: 18px;
+  top: 56px;
+  background: #0c0d10;
+  border: 1px solid #1f1f1f;
+  border-radius: 14px;
+  padding: 10px;
+  width: 210px;
+  display: none;
+}
+
+.menu-panel.open {
+  display: block;
+}
+
+.menu-panel a {
+  display: block;
+  padding: 8px 10px;
+  text-decoration: none;
+  color: #e6e6e6;
+  font-size: 14px;
+  border-radius: 8px;
+}
+
+.menu-panel a:hover {
+  background: #16181d;
+}
+
+.divider {
+  height: 1px;
+  background: #1f1f1f;
+  margin: 8px 0;
+}
+
+/* LAYOUT */
+main {
+  padding: 18px;
+}
+
+.page {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.panel {
+  background: rgba(15, 17, 22, 0.9);
+  border: 1px solid #1f1f1f;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+/* TEXT */
+h1 {
+  font-size: 22px;
+  letter-spacing: 0.5px;
+}
+.lead {
+  opacity: 0.7;
+  margin-bottom: 16px;
+}
+
+p {
+  opacity: 0.85;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+/* LIST */
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+.green { color: #3cff7a; }
+.yellow { color: #ffd166; }
+.red { color: #ff5c5c; }
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 24px 0 32px;
+  opacity: 0.6;
+  font-size: 13px;
+}
+
+footer a {
+  color: #3cff7a;
+  text-decoration: none;
+}
+.hero-title {
+  font-size: 20px;
+  opacity: 0.85;
+  margin-bottom: 12px;
+}
+@media (max-width: 480px) {
+  main {
+    padding: 14px;
+  }
+
+  .panel {
+    padding: 16px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+}
+.menu {
+  position: relative;
+}
+
+.menu-panel {
+  z-index: 9999;
+}
+
+.menu-panel a {
+  pointer-events: auto;
+}
+.topbar {
+  display: flex;
+  justify-content: space-between;
+}
+.menu-btn {
+  position: relative;
+  z-index: 9999;
+}
+.menu-btn span {
+  background: #ffffff;
+}
+/* FIX HAMBURGER (TITIK 3) */
+.menu-btn span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: #ffffff;
+  border-radius: 2px;
+}
