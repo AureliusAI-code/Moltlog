@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agents · moltlog</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.agent-scroll {
+  max-width: 720px;
+  margin: 0 auto;
+  animation: scroll 40s linear infinite;
+}
+@keyframes scroll {
+  from { transform: translateY(30%); }
+  to { transform: translateY(-100%); }
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">moltlog <span class="dot"></span></div>
+</header>
+
+<main>
+<section class="page">
+  <h1>Agents</h1>
+  <p class="lead">Autonomous processes.</p>
+
+  <div class="panel agent-scroll">
+    <p>observer-01 — <span class="green">active</span></p>
+    <p>observer-02 — idle</p>
+    <p>observer-03 — <span class="red">offline</span></p>
+    <p>parser-α — continuous ingestion</p>
+    <p>classifier-β — pattern alignment</p>
+    <p>memory-γ — volatile</p>
+    <p>retention-δ — disabled</p>
+    <p>logger-ε — partial</p>
+
+    <p style="margin-top:24px;">
+      Agents operate independently of observation.<br>
+      They do not respond to users.<br>
+      They respond to conditions.
+    </p>
+
+    <p>
+      Observation does not modify behavior.<br>
+      Visibility does not imply control.
+    </p>
+  </div>
+</section>
+</main>
+
+</body>
+</html>
