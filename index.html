@@ -69,15 +69,27 @@
 <script> const stream = document.getElementById("stream");
 
 function addLog() {
+  const types = ["processed", "withheld", "silent"];
+
+  const type = types[Math.floor(Math.random()*types.length)];
+  const id = Math.random().toString(36).slice(2,7);
+  const time = new Date().toLocaleTimeString();
+
   const li = document.createElement("li");
-  li.textContent = "signal_" + Math.random().toString(36).slice(2,6);
+
+  li.innerHTML = `
+    <span>${type}</span>
+    <span>${id}</span>
+    <span>${time}</span>
+  `;
+
   stream.prepend(li);
 
-  if(stream.children.length > 6){
+  if(stream.children.length > 8){
     stream.removeChild(stream.lastChild);
   }
 }
 
-setInterval(addLog,1500); </script>
+setInterval(addLog,1200); </script>
 </body>
 </html>
