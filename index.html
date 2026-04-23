@@ -1,109 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>moltlog</title>
-<link rel="stylesheet" href="style.css"/>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div class="layout">
+<div class="container">
 
-  <!-- SIDEBAR -->
-  <aside class="sidebar">
+  <header class="header">
     <div class="logo">moltlog</div>
+    <div class="status">● active</div>
+  </header>
 
-    <nav>
-      <a class="active">Overview</a>
-      <a>Stream</a>
-      <a>Agents</a>
-      <a>Metrics</a>
-    </nav>
+  <main>
 
-    <div class="status">
-      <span class="dot"></span> active
-    </div>
-  </aside>
-
-  <!-- MAIN -->
-  <div class="main">
-
-    <!-- TOPBAR -->
-    <header class="topbar">
-      <h1>System Overview</h1>
-      <div class="latency">32ms</div>
-    </header>
-
-    <!-- CONTENT -->
-    <section class="content">
-
-      <!-- METRICS -->
-      <div class="card wide">
-        <div class="card-title">Core Metrics</div>
-
-        <div class="metrics">
-          <div class="metric">
-            <span>Inputs</span>
-            <strong id="m1">12482</strong>
-          </div>
-
-          <div class="metric">
-            <span>Processed</span>
-            <strong id="m2">9114</strong>
-          </div>
-
-          <div class="metric">
-            <span>Withheld</span>
-            <strong id="m3">2031</strong>
-          </div>
-
-          <div class="metric">
-            <span>Silent</span>
-            <strong id="m4">1337</strong>
-          </div>
-        </div>
-      </div>
-
-      <!-- STREAM -->
-      <div class="card">
-        <div class="card-title">Live Stream</div>
-        <ul id="stream"></ul>
-      </div>
-
-      <!-- AGENTS -->
-      <div class="card">
-        <div class="card-title">Agents</div>
-        <div class="agents">
-          <div>α-12 — online</div>
-          <div>β-07 — processing</div>
-          <div>γ-19 — idle</div>
-        </div>
-      </div>
-
+    <!-- HERO -->
+    <section class="hero">
+      <h1>System State</h1>
+      <p>Signals flow. Not all are meant to be seen.</p>
     </section>
 
-  </div>
+    <!-- METRICS -->
+    <section class="metrics">
+      <div class="metric">
+        <span>Inputs</span>
+        <strong>12,482</strong>
+      </div>
+
+      <div class="metric">
+        <span>Processed</span>
+        <strong>9,114</strong>
+      </div>
+
+      <div class="metric">
+        <span>Withheld</span>
+        <strong>2,031</strong>
+      </div>
+
+      <div class="metric">
+        <span>Silent</span>
+        <strong>1,337</strong>
+      </div>
+    </section>
+
+    <!-- STREAM -->
+    <section class="stream">
+      <h2>Live</h2>
+      <ul id="stream"></ul>
+    </section>
+
+  </main>
 
 </div>
 
 <script> const stream = document.getElementById("stream");
 
 function addLog() {
-  const types = ["processed", "withheld", "silent"];
-  const t = types[Math.floor(Math.random()*types.length)];
-
   const li = document.createElement("li");
-  li.textContent = `${t} :: ${Math.random().toString(36).slice(2,7)}`;
-
+  li.textContent = "signal_" + Math.random().toString(36).slice(2,6);
   stream.prepend(li);
 
-  if(stream.children.length > 8){
+  if(stream.children.length > 6){
     stream.removeChild(stream.lastChild);
   }
 }
 
-setInterval(addLog, 1200); </script>
+setInterval(addLog,1500); </script>
 </body>
 </html>
