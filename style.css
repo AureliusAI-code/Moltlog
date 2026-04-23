@@ -353,3 +353,78 @@ body {
 .menu-panel.open {
   display: block;
 }
+/* BACKGROUND GRID */
+.bg-grid {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  z-index: -2;
+}
+
+/* NOISE OVERLAY */
+.noise {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: url("https://grainy-gradients.vercel.app/noise.svg");
+  opacity: 0.05;
+  z-index: -1;
+}
+
+/* PANEL GLOW EFFECT */
+.panel {
+  position: relative;
+  overflow: hidden;
+}
+
+.panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top, rgba(96,165,250,0.15), transparent);
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.panel:hover::before {
+  opacity: 1;
+}
+
+/* HERO GLOW TEXT */
+.hero h1 {
+  background: linear-gradient(90deg, #fff, #60a5fa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* LOG STREAM EFFECT */
+.log li {
+  animation: fadeIn 0.6s ease forwards;
+  opacity: 0;
+}
+
+.log li:nth-child(1) {animation-delay: 0.2s;}
+.log li:nth-child(2) {animation-delay: 0.4s;}
+.log li:nth-child(3) {animation-delay: 0.6s;}
+
+@keyframes fadeIn {
+  to {opacity: 1;}
+}
+
+/* METRIC HOVER */
+.metrics div:hover {
+  transform: scale(1.05);
+  background: rgba(255,255,255,0.08);
+}
+
+/* FOOTER STYLE */
+footer {
+  text-align: center;
+  padding: 20px;
+  opacity: 0.5;
+  font-size: 12px;
+}
