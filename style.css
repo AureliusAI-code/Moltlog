@@ -201,3 +201,155 @@ footer a {
   background: #ffffff;
   border-radius: 2px;
 }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  background: radial-gradient(circle at top, #0f172a, #020617);
+  color: #e5e7eb;
+}
+
+/* TOPBAR */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 40px;
+  backdrop-filter: blur(10px);
+}
+
+.brand {
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background: #22c55e;
+  border-radius: 50%;
+  display: inline-block;
+  margin-left: 6px;
+}
+
+.pulse {
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {opacity: 1;}
+  50% {opacity: 0.3;}
+  100% {opacity: 1;}
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  gap: 20px;
+  padding: 40px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+/* PANEL */
+.panel {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 24px;
+  transition: 0.3s;
+}
+
+.panel:hover {
+  transform: translateY(-4px);
+}
+
+/* HERO */
+.hero h1 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.lead {
+  opacity: 0.7;
+  margin-bottom: 20px;
+}
+
+/* METRICS */
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.metrics div {
+  background: rgba(255,255,255,0.03);
+  padding: 12px;
+  border-radius: 10px;
+}
+
+.metrics span {
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+.metrics strong {
+  display: block;
+  margin-top: 4px;
+  font-size: 18px;
+}
+
+/* COLORS */
+.green {color:#22c55e;}
+.yellow {color:#eab308;}
+.red {color:#ef4444;}
+
+/* LOG */
+.log li {
+  margin: 8px 0;
+  font-size: 14px;
+}
+
+/* DOCS */
+.doc-links a {
+  display: inline-block;
+  margin-right: 12px;
+  color: #60a5fa;
+  text-decoration: none;
+}
+
+.doc-links a:hover {
+  text-decoration: underline;
+}
+
+/* MENU */
+.menu-btn {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: none;
+  border: none;
+}
+
+.menu-btn span {
+  width: 20px;
+  height: 2px;
+  background: white;
+}
+
+.menu-panel {
+  position: absolute;
+  right: 40px;
+  top: 60px;
+  background: #020617;
+  padding: 12px;
+  border-radius: 10px;
+  display: none;
+}
+
+.menu-panel.open {
+  display: block;
+}
