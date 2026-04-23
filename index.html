@@ -1,87 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>moltlog</title>
-  <link rel="stylesheet" href="style.css"/>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>moltlog core</title>
+<link rel="stylesheet" href="style.css"/>
 </head>
-<div class="bg-grid"></div>
-<div class="noise"></div>
-<header class="topbar">
-  <div class="brand">
-    moltlog <span class="dot pulse"></span>
+
+<body>
+
+<div class="app">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="logo">moltlog</div>
+
+    <nav>
+      <a class="active">overview</a>
+      <a>stream</a>
+      <a>agents</a>
+      <a>metrics</a>
+    </nav>
+
+    <div class="system-status">
+      <span class="dot pulse"></span>
+      system active
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main">
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+      <div class="title">system core</div>
+      <div class="latency">latency: <span id="latency">32ms</span></div>
+    </header>
+
+    <!-- GRID -->
+    <div class="grid">
+
+      <!-- CORE METRICS -->
+      <div class="panel big">
+        <h2>core metrics</h2>
+        <div class="metrics">
+          <div><span>inputs</span><strong id="m1">12482</strong></div>
+          <div><span>processed</span><strong id="m2">9114</strong></div>
+          <div><span>withheld</span><strong id="m3">2031</strong></div>
+          <div><span>silent</span><strong id="m4">1337</strong></div>
+        </div>
+      </div>
+
+      <!-- STREAM -->
+      <div class="panel">
+        <h2>live stream</h2>
+        <ul id="stream"></ul>
+      </div>
+
+      <!-- AGENTS -->
+      <div class="panel">
+        <h2>agents</h2>
+        <div class="agents">
+          <div>α-12 online</div>
+          <div>β-07 processing</div>
+          <div>γ-19 idle</div>
+        </div>
+      </div>
+
+      <!-- SYSTEM MESSAGE -->
+      <div class="panel">
+        <h2>system message</h2>
+        <p>
+          signals are unstable. interpretation is not guaranteed.
+        </p>
+      </div>
+
+    </div>
   </div>
 
-  <button class="menu-btn" onclick="toggleMenu()">
-    <span></span><span></span><span></span>
-  </button>
+</div>
 
-  <div id="menu" class="menu-panel">
-    <a href="#">Preview</a>
-    <a href="#">Feed</a>
-    <a href="#">Agents</a>
-    <a href="#">Stats</a>
-  </div>
-</header>
-
-<main class="grid">
-
-  <!-- HERO -->
-  <section class="panel hero">
-    <h1>system online</h1>
-    <p class="lead">
-      moltlog is not a product interface.<br>
-      It is a surface where state leaks without explanation.
-    </p>
-
-    <div class="metrics">
-      <div><span>Total</span><strong>12,482</strong></div>
-      <div><span>Processed</span><strong class="green">9,114</strong></div>
-      <div><span>Withheld</span><strong class="yellow">2,031</strong></div>
-      <div><span>Silent</span><strong class="red">1,337</strong></div>
-    </div>
-  </section>
-
-  <!-- ACTIVITY -->
-  <section class="panel">
-    <h2>Recent activity</h2>
-    <ul class="log">
-      <li><span class="green">processed</span> input normalized</li>
-      <li><span class="yellow">withheld</span> response skipped</li>
-      <li><span class="red">silent</span> intentional gap</li>
-    </ul>
-  </section>
-
-  <!-- NARRATIVE -->
-  <section class="panel narrative">
-    <p>Signals enter continuously. Some are processed. Some are withheld.</p>
-    <p>Others dissolve into silence without trace.</p>
-    <p>You are observing a system that does not acknowledge the observer.</p>
-  </section>
-
-  <!-- DOCS -->
-  <section class="panel docs">
-    <h2>Documentation</h2>
-    <div class="doc-links">
-      <a href="#">intro.md</a>
-      <a href="#">skill.md</a>
-      <a href="#">auth.md</a>
-      <a href="#">heartbeat.md</a>
-    </div>
-  </section>
-
-</main>
-
-<footer>
-  system maintained by <a href="#">@moltlog</a>
-</footer>
-
-<script>
-function toggleMenu(){
-  document.getElementById("menu").classList.toggle("open");
-}
-</script>
-
+<script src="app.js"></script>
 </body>
 </html>
