@@ -2,26 +2,62 @@
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family:'Space Grotesk', sans-serif;
 }
 
 body {
-  background:#000;
-  color:#fff;
+  background:#020617;
+  color:#e5e7eb;
+  overflow:hidden;
 }
 
-/* CONTAINER */
-.container {
-  max-width:900px;
-  margin:auto;
-  padding:40px 20px;
+/* BACKGROUND GRID */
+.bg-grid {
+  position:fixed;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size:40px 40px;
+  z-index:-2;
 }
 
-/* HEADER */
-.header {
+/* GLOW */
+.glow {
+  position:fixed;
+  width:600px;
+  height:600px;
+  background:radial-gradient(circle, rgba(59,130,246,0.12), transparent 60%);
+  top:20%;
+  left:60%;
+  filter:blur(80px);
+  z-index:-1;
+}
+
+/* CURSOR LIGHT */
+.cursor-light {
+  position:fixed;
+  width:300px;
+  height:300px;
+  background:radial-gradient(circle, rgba(255,255,255,0.08), transparent 60%);
+  pointer-events:none;
+  transform:translate(-50%,-50%);
+}
+
+/* LAYOUT */
+.app {
   display:flex;
+  height:100vh;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width:220px;
+  padding:24px;
+  border-right:1px solid rgba(255,255,255,0.05);
+  display:flex;
+  flex-direction:column;
   justify-content:space-between;
-  margin-bottom:60px;
 }
 
 .logo {
@@ -29,115 +65,131 @@ body {
   font-size:18px;
 }
 
+nav a {
+  display:block;
+  padding:8px 0;
+  color:#64748b;
+}
+
+nav a.active,
+nav a:hover {
+  color:#fff;
+}
+
+.bottom a {
+  font-size:13px;
+  color:#64748b;
+  text-decoration:none;
+}
+
+.bottom a:hover {
+  color:#fff;
+}
+
 .status {
+  margin-top:10px;
+  font-size:12px;
+}
+
+.status span {
+  width:6px;
+  height:6px;
+  background:#22c55e;
+  border-radius:50%;
+  display:inline-block;
+}
+
+/* MAIN */
+.main {
+  flex:1;
+  display:flex;
+  flex-direction:column;
+}
+
+/* TOPBAR */
+.topbar {
+  padding:20px;
+  border-bottom:1px solid rgba(255,255,255,0.05);
+  display:flex;
+  justify-content:space-between;
+}
+
+.title {
   font-size:14px;
-  color:#4ade80;
+  letter-spacing:2px;
 }
 
-/* HERO */
-.hero h1 {
-  font-size:48px;
-  font-weight:600;
-  margin-bottom:10px;
+.meta span {
+  color:#22c55e;
 }
 
-.hero p {
-  color:#777;
-  font-size:16px;
-  margin-bottom:60px;
+/* GRID */
+.grid {
+  padding:20px;
+  display:grid;
+  gap:20px;
+  grid-template-columns:repeat(2,1fr);
+}
+
+/* PANEL */
+.panel {
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.06);
+  border-radius:14px;
+  padding:16px;
+  transition:0.25s;
+}
+
+.panel:hover {
+  border-color:rgba(255,255,255,0.2);
+}
+
+/* LARGE */
+.large {
+  grid-column:span 2;
 }
 
 /* METRICS */
 .metrics {
   display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:40px;
-  margin-bottom:60px;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  margin-top:10px;
 }
 
-.metric span {
-  font-size:13px;
-  color:#666;
+.metrics div {
+  background:rgba(255,255,255,0.02);
+  padding:10px;
+  border-radius:8px;
 }
 
-.metric strong {
+.metrics span {
+  font-size:11px;
+  color:#64748b;
+}
+
+.metrics strong {
   display:block;
-  font-size:32px;
-  margin-top:6px;
+  font-size:18px;
+  margin-top:4px;
 }
 
 /* STREAM */
-.stream h2 {
-  font-size:16px;
-  margin-bottom:10px;
-}
-
 #stream {
-  font-size:13px;
-  color:#888;
-  line-height:1.8;
-}
-/* HEADER RIGHT */
-.right {
-  display:flex;
-  align-items:center;
-  gap:16px;
+  font-size:12px;
+  line-height:1.6;
+  max-height:200px;
+  overflow:hidden;
 }
 
-/* X LINK */
-.x-link {
-  font-size:14px;
-  color:#888;
-  text-decoration:none;
-  transition:0.2s;
-}
-
-.x-link:hover {
-  color:#fff;
-}
-
-/* STATUS */
-.status {
-  font-size:14px;
-  color:#4ade80;
-}
-
-/* DIVIDER FEEL */
-.hero {
-  border-bottom:1px solid rgba(255,255,255,0.08);
-  padding-bottom:40px;
-  margin-bottom:40px;
-}
-
-/* METRICS IMPROVE */
-.metric strong {
-  letter-spacing:-1px;
-}
-
-/* STREAM UPGRADE */
 #stream li {
   display:flex;
   justify-content:space-between;
-  border-bottom:1px solid rgba(255,255,255,0.05);
-  padding:6px 0;
+  opacity:0.8;
 }
 
-/* FOOTER */
-.footer {
-  margin-top:80px;
-  display:flex;
-  justify-content:space-between;
-  font-size:12px;
-  color:#666;
-  border-top:1px solid rgba(255,255,255,0.08);
-  padding-top:20px;
-}
-
-.footer a {
-  color:#888;
-  text-decoration:none;
-}
-
-.footer a:hover {
-  color:#fff;
+/* AGENTS */
+.agents div {
+  margin:6px 0;
+  font-size:13px;
 }
