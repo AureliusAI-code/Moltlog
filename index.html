@@ -3,93 +3,137 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>moltlog</title>
+<title>moltlog lab</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
-<div class="container">
+<div class="bg-grid"></div>
+<div class="glow"></div>
+<div class="cursor-light"></div>
 
-  <header class="header">
-  <div class="logo">moltlog</div>
+<div class="app">
 
-  <div class="right">
-    <a href="https://x.com/moltlog" target="_blank" class="x-link">
-      @moltlog ↗
-    </a>
-    <div class="status">● active</div>
-  </div>
-</header>
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="logo">moltlog</div>
 
-  <main>
+    <nav>
+      <a class="active">lab</a>
+      <a>stream</a>
+      <a>agents</a>
+      <a>modules</a>
+    </nav>
 
-    <!-- HERO -->
-    <section class="hero">
-      <h1>System State</h1>
-      <p>Signals flow. Not all are meant to be seen.</p>
-    </section>
+    <div class="bottom">
+      <a href="https://x.com/moltlog" target="_blank">@moltlog ↗</a>
+      <div class="status"><span></span> active</div>
+    </div>
+  </aside>
 
-    <!-- METRICS -->
-    <section class="metrics">
-      <div class="metric">
-        <span>Inputs</span>
-        <strong>12,482</strong>
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+      <div class="title">AI LAB SYSTEM</div>
+      <div class="meta">
+        latency <span id="latency">28ms</span>
+      </div>
+    </header>
+
+    <!-- GRID -->
+    <section class="grid">
+
+      <!-- METRICS -->
+      <div class="panel large">
+        <h3>core metrics</h3>
+        <div class="metrics">
+          <div><span>inputs</span><strong id="m1">12482</strong></div>
+          <div><span>processed</span><strong id="m2">9114</strong></div>
+          <div><span>withheld</span><strong id="m3">2031</strong></div>
+          <div><span>silent</span><strong id="m4">1337</strong></div>
+        </div>
       </div>
 
-      <div class="metric">
-        <span>Processed</span>
-        <strong>9,114</strong>
+      <!-- STREAM -->
+      <div class="panel">
+        <h3>live stream</h3>
+        <ul id="stream"></ul>
       </div>
 
-      <div class="metric">
-        <span>Withheld</span>
-        <strong>2,031</strong>
+      <!-- AGENTS -->
+      <div class="panel">
+        <h3>agents</h3>
+        <div class="agents">
+          <div>α-12 online</div>
+          <div>β-07 processing</div>
+          <div>γ-19 idle</div>
+        </div>
       </div>
 
-      <div class="metric">
-        <span>Silent</span>
-        <strong>1,337</strong>
+      <!-- SYSTEM TEXT -->
+      <div class="panel">
+        <h3>observation</h3>
+        <p>
+          not all signals are resolved.  
+          some remain intentionally unobserved.
+        </p>
       </div>
-    </section>
 
-    <!-- STREAM -->
-    <section class="stream">
-      <h2>Live</h2>
-      <ul id="stream"></ul>
     </section>
 
   </main>
- <footer class="footer">
-  <span>moltlog system interface</span>
-  <a href="https://x.com/moltlog" target="_blank">@moltlog</a>
-</footer>
+
 </div>
 
 <script> const stream = document.getElementById("stream");
 
-function addLog() {
-  const types = ["processed", "withheld", "silent"];
+/* CURSOR LIGHT */
+const light = document.querySelector(".cursor-light");
 
-  const type = types[Math.floor(Math.random()*types.length)];
-  const id = Math.random().toString(36).slice(2,7);
+document.addEventListener("mousemove", e => {
+  light.style.left = e.clientX + "px";
+  light.style.top = e.clientY + "px";
+});
+
+/* STREAM */
+function addLog() {
+  const types = ["processed","withheld","silent"];
+  const t = types[Math.floor(Math.random()*types.length)];
+  const id = "pkt_" + Math.random().toString(36).slice(2,6);
   const time = new Date().toLocaleTimeString();
 
   const li = document.createElement("li");
-
-  li.innerHTML = `
-    <span>${type}</span>
-    <span>${id}</span>
-    <span>${time}</span>
-  `;
+  li.innerHTML = `<span>${t}</span><span>${id}</span><span>${time}</span>`;
 
   stream.prepend(li);
 
-  if(stream.children.length > 8){
+  if(stream.children.length > 10){
     stream.removeChild(stream.lastChild);
   }
 }
 
-setInterval(addLog,1200); </script>
+setInterval(addLog,900);
+
+/* LATENCY */
+setInterval(()=>{
+  document.getElementById("latency").innerText =
+    Math.floor(Math.random()*40+20)+"ms";
+},1000);
+
+/* METRICS */
+["m1","m2","m3","m4"].forEach(id=>{
+  setInterval(()=>{
+    let el = document.getElementById(id);
+    let v = parseInt(el.innerText);
+    v += Math.floor(Math.random()*6-3);
+    el.innerText = v;
+  },2000);
+}); </script>
 </body>
 </html>
